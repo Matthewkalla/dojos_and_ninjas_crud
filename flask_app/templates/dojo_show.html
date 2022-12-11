@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dojo Show</title>
+</head>
+<body>
+    <h1>{{ one_dojo.name }} Ninja(s)</h1>
+    {% if one_dojo.ninjas|length > 0 %}
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for one_ninja in one_dojo.ninjas %}
+            <tr>
+                <td>{{ one_ninja.first_name }}</td>
+                <td>{{ one_ninja.last_name }}</td>
+                <td>{{ one_ninja.age }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2>There are no ninjas yet associated with this dojo.</h2>
+    {% endif %}
+
+    <hr>
+    <a href="/dojos">Home</a>
+</body>
+</html>
